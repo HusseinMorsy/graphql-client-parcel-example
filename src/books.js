@@ -12,7 +12,19 @@ const BOOKS_QUERY = gql`
   }
 `;
 
-function BookList({ books }) {
+function BooksContainer() {
+  return (
+    <Query query={BOOKS_QUERY}>
+      {({ loading, error, data }) => {
+        if (loading) return <p>Loading...</p>;
+        if (error) return <p>Error</p>;
+        return <Books books={data.books} />;
+      }}
+    </Query>
+  );
+}
+
+function Books({ books }) {
   return (
     <div>
       <h2>My favorites books</h2>
@@ -21,24 +33,12 @@ function BookList({ books }) {
   );
 }
 
-const Book = ({ book }) => (
-  <li>
-    {book.title} from {book.author} ({book.year})
-  </li>
-);
-
-class Books extends React.Component {
-  render() {
-    return (
-      <Query query={BOOKS_QUERY}>
-        {({ loading, error, data }) => {
-          if (loading) return <p>Loading...</p>;
-          if (error) return <p>Error</p>;
-          return <BookList books={data.books} />;
-        }}
-      </Query>
-    );
-  }
+function Book({ book }) {
+  return (
+    <li>
+      {book.title} from {book.author} ({book.year})
+    </li>
+  );
 }
 
-export default Books;
+export default BooksContainer;
