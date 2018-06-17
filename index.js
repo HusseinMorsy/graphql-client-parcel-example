@@ -1,9 +1,15 @@
 import React from "react";
 import ReactDom from "react-dom";
+import Hello from "./src/hello";
 
 class App extends React.Component {
   render() {
-    return <div> Bismillah </div>;
+    return (
+      <React.Fragment>
+        <h1> Bismillah </h1>
+        <Hello name="Esma" />
+      </React.Fragment>
+    );
   }
 }
 
