@@ -1,19 +1,18 @@
 import React from "react";
-import ReactDom from "react-dom";
+import { render } from "react-dom";
 import Hello from "./src/hello";
 import Books from "./src/books";
 
 class App extends React.Component {
   render() {
     return (
-      <React.Fragment>
+      <div>
         <h1> Bismillah </h1>
         <Hello name="Esma" />
         <Books />
-      </React.Fragment>
+      </div>
     );
   }
 }
 
-const rootNode = document.getElementById("app");
-ReactDom.render(<App />, rootNode);
+render(<App />, document.getElementById("app"));
