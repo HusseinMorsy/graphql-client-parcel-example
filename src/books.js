@@ -7,6 +7,7 @@ const BOOKS_QUERY = gql`
     books {
       title
       author
+      year
     }
   }
 `;
@@ -22,7 +23,7 @@ function BookList({ books }) {
 
 const Book = ({ book }) => (
   <li>
-    {book.title} from {book.author}
+    {book.title} from {book.author} ({book.year})
   </li>
 );
 
